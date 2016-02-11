@@ -9,14 +9,14 @@ function (angular) {
   var module = angular.module('grafiz.services');
 
   module.factory('WIFITE1', function() {
-    function ZNATV01() {
+    function WIFITE1() {
       this.meta = {
         type: 'WIFITE1',
         editor: '/partials/editor.html'
       };
     }
 
-    return ZNATV01;
+    return WIFITE1;
   });
 
 });

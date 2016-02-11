@@ -164,13 +164,15 @@ function (angular) {
     $scope.outBtnClick = function (outId) {
       $log.log('outBtnClick',$scope.outputs[outId]);
       //  byte[] by = {CMD_TRIG_OUT,(byte)id,b};
-      var byteArray = new Uint8Array(3);
+      var byteArray = new Uint8Array(5);
       byteArray[0] = 18;
-      byteArray[1] = outId;
+      byteArray[1] = 0; //length of rest
+      byteArray[2] = 2; //length of rest
+      byteArray[3] = outId;
       if($scope.outputs[outId].value){
-        byteArray[2] = 1;
+        byteArray[4] = 1;
       }else{
-        byteArray[2] = 0;
+        byteArray[4] = 0;
       }
       $scope.send(byteArray);
     };
@@ -181,8 +183,10 @@ function (angular) {
       //byte[] by = {CMD_INT_TYPE,(byte)id,dev.getInputs()[id].getType()};
       var byteArray = new Uint8Array(3);
       byteArray[0] = 14;
-      byteArray[1] = $scope.current_input.id;
-      byteArray[2] = $scope.current_input.type;
+      byteArray[1] = 0; //length of rest
+      byteArray[2] = 2; //length of rest
+      byteArray[3] = $scope.current_input.id;
+      byteArray[4] = $scope.current_input.type;
       $scope.send(byteArray);
       $scope.setCol($scope.current_input.id,$scope.current_input.nameA,$scope.current_input.nameB);
     };
@@ -207,12 +211,14 @@ function (angular) {
       var buf = new ArrayBuffer(8);
       var byteArray = new Uint8Array(buf,0,6);
       byteArray[0]=15;
-      byteArray[1]=$scope.current_trig.id;
-      byteArray[2]=$scope.current_trig.input;
-      byteArray[3]=$scope.current_trig.oper;
-      byteArray[4]=$scope.current_trig.out;
-      byteArray[5]=$scope.current_trig.out_dir;
-      var val = new Int16Array(buf, 6, 1);
+      byteArray[1] = 0; //length of rest
+      byteArray[2] = 7; //length of rest
+      byteArray[3]=$scope.current_trig.id;
+      byteArray[4]=$scope.current_trig.input;
+      byteArray[5]=$scope.current_trig.oper;
+      byteArray[6]=$scope.current_trig.out;
+      byteArray[7]=$scope.current_trig.out_dir;
+      var val = new Int16Array(buf, 8, 1);
       var v = Math.round($scope.current_trig.val)*10;
       //$log.log('val',v);
 
@@ -222,10 +228,11 @@ function (angular) {
 
     $scope.updateInterval = function() {
       $log.log('updateInterval'+$scope.fr.interval);
-      var buf = new ArrayBuffer(5);
+      var buf = new ArrayBuffer(7);
       var dv = new DataView(buf);
       dv.setUint8(0,19);
-      dv.setUint32(1,Math.round($scope.fr.interval));
+      dv.setInt16(1,4);
+      dv.setUint32(3,Math.round($scope.fr.interval));
       $scope.send(buf);
     };
 
