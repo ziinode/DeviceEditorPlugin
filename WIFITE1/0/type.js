@@ -12,7 +12,7 @@ function (angular) {
     function WIFITE1() {
       this.meta = {
         type: 'WIFITE1',
-        editor: '/partials/editor.html'
+        editor: 'partials/editor.html'
       };
     }
 

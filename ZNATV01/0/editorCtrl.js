@@ -235,6 +235,10 @@ function (angular) {
       $scope.dismiss();
     };
 
+//    $scope.getStyle = function() {
+//      return deviceSrv.getPartialBaseUrl(current)+'/partials/style.css';
+//    };
+
     $scope.editTrigger = function(trig) {
       $scope.current_trig = trig;
       $log.log('editTrigger',$scope.current_trig);

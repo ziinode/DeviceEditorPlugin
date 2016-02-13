@@ -12,7 +12,7 @@ function (angular) {
     function ZNATV01() {
       this.meta = {
         type: 'ZNATV01',
-        editor: '/partials/editor.html'
+        editor: 'partials/editor.html'
       };
     }
 

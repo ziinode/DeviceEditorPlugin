@@ -181,7 +181,7 @@ function (angular) {
       $log.log('ie_save');
       $scope.dismiss();
       //byte[] by = {CMD_INT_TYPE,(byte)id,dev.getInputs()[id].getType()};
-      var byteArray = new Uint8Array(3);
+      var byteArray = new Uint8Array(5);
       byteArray[0] = 14;
       byteArray[1] = 0; //length of rest
       byteArray[2] = 2; //length of rest

@@ -12,7 +12,7 @@ function (angular) {
     function ARDETH1() {
       this.meta = {
         type: 'ARDETH1',
-        editor: '/partials/editor.html'
+        editor: 'partials/editor.html'
       };
     }
 
