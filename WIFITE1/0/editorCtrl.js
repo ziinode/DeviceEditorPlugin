@@ -166,8 +166,8 @@ function (angular) {
       //  byte[] by = {CMD_TRIG_OUT,(byte)id,b};
       var byteArray = new Uint8Array(5);
       byteArray[0] = 18;
-      byteArray[1] = 0; //length of rest
-      byteArray[2] = 2; //length of rest
+      byteArray[1] = 2; //length of rest
+      byteArray[2] = 0; //length of rest
       byteArray[3] = outId;
       if($scope.outputs[outId].value){
         byteArray[4] = 1;
@@ -183,8 +183,8 @@ function (angular) {
       //byte[] by = {CMD_INT_TYPE,(byte)id,dev.getInputs()[id].getType()};
       var byteArray = new Uint8Array(5);
       byteArray[0] = 14;
-      byteArray[1] = 0; //length of rest
-      byteArray[2] = 2; //length of rest
+      byteArray[1] = 2; //length of rest
+      byteArray[2] = 0; //length of rest
       byteArray[3] = $scope.current_input.id;
       byteArray[4] = $scope.current_input.type;
       $scope.send(byteArray);
@@ -208,11 +208,11 @@ function (angular) {
     $scope.te_save = function() {
       $log.log('te_save');
       $scope.dismiss();
-      var buf = new ArrayBuffer(8);
-      var byteArray = new Uint8Array(buf,0,6);
+      var buf = new ArrayBuffer(10);
+      var byteArray = new Uint8Array(buf,0,8);
       byteArray[0]=15;
-      byteArray[1] = 0; //length of rest
-      byteArray[2] = 7; //length of rest
+      byteArray[1] = 7; //length of rest
+      byteArray[2] = 0; //length of rest
       byteArray[3]=$scope.current_trig.id;
       byteArray[4]=$scope.current_trig.input;
       byteArray[5]=$scope.current_trig.oper;
