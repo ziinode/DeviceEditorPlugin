@@ -1,3 +1,5 @@
+#!!! Repository moved to [github.com/tinovi](https://github.com/tinovi)
+
 This is demo Device Editor Plugins for [www.ziinode.io](www.ziinode.io) IoT cloud service.
 You can create your own plugin for your own Device Type. For uploading you should pack your plugin in zip archive and zip archive root should contain file `type.js` with following content:
 ```
